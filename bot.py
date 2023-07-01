@@ -46,15 +46,15 @@ def _telegram_file(client, message):
 def callback_query(CLIENT,CallbackQuery):
   global langtoken
   if CallbackQuery.data == "mod1":
-      langtoken = "./rnnoise-models/somnolent-hogwash-2018-09-01/sh.rnnn"
+      langtoken = "rnnoise-models/somnolent-hogwash-2018-09-01/sh.rnnn"
   elif CallbackQuery.data == "mod2":
-      langtoken = "./rnnoise-models/marathon-prescription-2018-08-29/mp.rnnn"
+      langtoken = "rnnoise-models/marathon-prescription-2018-08-29/mp.rnnn"
   elif CallbackQuery.data == "mod3":
-      langtoken = "./rnnoise-models/leavened-quisling-2018-08-31/lq.rnnn"
+      langtoken = "rnnoise-models/leavened-quisling-2018-08-31/lq.rnnn"
   elif CallbackQuery.data == "mod4" :
-      langtoken = "./rnnoise-models/conjoined-burgers-2018-08-28/cb.rnnn"
+      langtoken = "rnnoise-models/conjoined-burgers-2018-08-28/cb.rnnn"
   elif CallbackQuery.data == "mod5":
-      langtoken = "./rnnoise-models/beguiling-drafter-2018-08-30/bd.rnnn"
+      langtoken = "rnnoise-models/beguiling-drafter-2018-08-30/bd.rnnn"
   
   CallbackQuery.edit_message_text(
       
