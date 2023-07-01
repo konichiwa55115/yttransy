@@ -8,7 +8,7 @@ bot = Client(
     "merger",
     api_id=17983098,
     api_hash="ee28199396e0925f1f44d945ac174f64",
-    bot_token="6169974916:AAExX1xGCET6pk6pjtfGRo6Qnd5aCdGLqjk"
+    bot_token="6169974916:AAHl_RThcfUk7kgPTUDhwBtMBqNhbMjExOg"
 )
 
 CHOOSE_UR_LANG = "أرسل باقي الصوتيات بالترتيب ثم اضغط دمج الآن  "
