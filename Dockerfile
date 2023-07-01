@@ -2,8 +2,8 @@ FROM python:3.9-buster
 RUN apt update && apt upgrade -y
 RUN  apt-get update 
 RUN apt install git curl python3-pip ffmpeg -y
-RUN apt-get -y install libavcodec-dev
-RUN apt-get install yasm libvpx. libx264.
+RUN apt-get -y install libavcodec-dev -y
+RUN apt-get install yasm libvpx. libx264. -y
 RUN apt install dos2unix
 RUN pip3 install -U pip
 COPY requirements.txt /requirements.txt
