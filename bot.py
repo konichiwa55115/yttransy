@@ -35,7 +35,7 @@ def _telegram_file(client, message):
 
         )
  
-  subprocess.call(['ffmpeg','-i',file_path,'-af',f"arnndn=m=mp.rnn","mod"+mp3file,'-y']) 
+  subprocess.call(['ffmpeg','-i',file_path,'-af',f"arnndn=m=mp.rnnn","mod"+mp3file,'-y']) 
   subprocess.call(['ffmpeg','-i',"mod"+mp3file,'-af', "volume=4",mp3file,'-y']) 
   with open(mp3file, 'rb') as f:
          bot.send_audio(user_id, f)
