@@ -60,7 +60,7 @@ def callback_query(CLIENT,CallbackQuery):
       
       "جار إزالة الضوضاء"
   )   
-  subprocess.call(['ffmpeg','-i',file_path,'-af',f'arnndn=m={langtoken}',"mod"+mp3file,'-y']) 
+  subprocess.call(['ffmpeg','-i',file_path,'-af',f"arnndn=m={langtoken}","mod"+mp3file,'-y']) 
   subprocess.call(['ffmpeg','-i',"mod"+mp3file,'-af', "volume=4",mp3file,'-y']) 
   with open(mp3file, 'rb') as f:
          bot.send_audio(user_id, f)
