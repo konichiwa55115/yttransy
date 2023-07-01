@@ -30,8 +30,7 @@ def _telegram_file(client, message):
   global mp3file
   mp3file = realname+".mp3"
   message.reply(
-             text = CHOOSE_UR_LANG,
-             reply_markup = InlineKeyboardMarkup(CHOOSE_UR_LANG_BUTTONS)
+            "جار إزالة الضوضاء"
 
         )
  
