@@ -52,7 +52,7 @@ def callback_query(CLIENT,CallbackQuery):
          bot.send_audio(user_id, f)
   subprocess.call(['unlink',"list.txt"]) 
   subprocess.call(['unlink',mp3file]) 
-  subprocess.call(['rm','-r','./downloads/']) 
+  subprocess.call(['unlink',file_path]) 
 
 
        
