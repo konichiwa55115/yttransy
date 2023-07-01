@@ -30,16 +30,14 @@ def _telegram_file(client, message):
   global mp3file
   mp3file = realname+".mp3"
   message.reply(
-            "جار إزالة الضوضاء"
+            "جار الضغط"
 
         )
  
-  subprocess.call(['ffmpeg','-i',file_path,'-af',f"arnndn=m=mp.rnnn","mod"+mp3file,'-y']) 
-  subprocess.call(['ffmpeg','-i',"mod"+mp3file,'-af', "volume=4",mp3file,'-y']) 
+  subprocess.call(['ffmpeg','-i',file_path,'-b:a','50k',mp3file,'-y']) 
   with open(mp3file, 'rb') as f:
          bot.send_audio(user_id, f)
   subprocess.call(['unlink',mp3file]) 
-  subprocess.call(['unlink',"mod"+mp3file])
   subprocess.call(['unlink',file_path]) 
 
 
