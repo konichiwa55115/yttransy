@@ -1,5 +1,5 @@
 echo "Cloning Repo...."
-git clone https://github.com/konichiwa55115/noise5115 /kony
+git clone https://github.com/konichiwa55115/yt41515115 /kony
 cd /kony
 pip3 install -r requirements.txt
 echo "Starting Bot...."
