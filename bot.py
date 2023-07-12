@@ -8,7 +8,8 @@ from pyrogram.types import InlineKeyboardMarkup , InlineKeyboardButton , ReplyKe
 
 CHOOSE_UR_LANG = " Choose Your folmula ! "
 CHOOSE_UR_LANG_BUTTONS = [
-    [InlineKeyboardButton("vid",callback_data="vid")],
+    [InlineKeyboardButton("vid 360p",callback_data="vid 360p")],
+     [InlineKeyboardButton("vid 720p",callback_data="vid 720p")],
      [InlineKeyboardButton("aud",callback_data="aud")]
 ]
 
@@ -39,7 +40,13 @@ def _telegram_file(client, message):
 
 @bot.on_callback_query()
 def callback_query(CLIENT,CallbackQuery):
-  if CallbackQuery.data == "vid":
+  CallbackQuery.edit_message_text(
+      
+      "جار التنزيل "
+  )   
+  if CallbackQuery.data == "vid 360p":
+      cmd(f'yt-dlp -f 18 -o downloads/+"%(title)s.%(ext)s" {url}')
+  elif CallbackQuery.data == "vid 720p":
       cmd(f'yt-dlp -f 22 -o downloads/+"%(title)s.%(ext)s" {url}')
   elif CallbackQuery.data == "aud":
       cmd(f'yt-dlp --extract-audio --audio-format mp3  -o downloads/+"%(title)s.%(ext)s" {url}')
@@ -47,7 +54,7 @@ def callback_query(CLIENT,CallbackQuery):
   shutil.rmtree('./downloads/')
   CallbackQuery.edit_message_text(
       
-      "تم التنزيل "
+      "تم التنزيل ✅"
   )   
 
 
