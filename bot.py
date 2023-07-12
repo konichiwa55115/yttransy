@@ -27,10 +27,13 @@ def _telegram_file(client, message):
 
   
   user_id = message.from_user.id 
-  url = message.text
-  
-  message.reply_text("ججار التحميل ")
+  url = message.text  
   cmd(f'mkdir downloads')
+  message.reply(
+             text = CHOOSE_UR_LANG,
+             reply_markup = InlineKeyboardMarkup(CHOOSE_UR_LANG_BUTTONS)
+
+        )
 
 @bot.on_callback_query()
 def callback_query(CLIENT,CallbackQuery):
