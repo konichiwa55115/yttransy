@@ -3,6 +3,7 @@ from pyrogram import Client, filters
 from pyrogram.types import ForceReply
 import subprocess
 import shutil
+from os import system as cmd
 from pyrogram.types import InlineKeyboardMarkup , InlineKeyboardButton , ReplyKeyboardMarkup , CallbackQuery
 
 CHOOSE_UR_LANG = " Choose Your folmula ! "
