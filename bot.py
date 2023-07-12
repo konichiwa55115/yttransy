@@ -28,6 +28,7 @@ def _telegram_file(client, message):
 
   
   user_id = message.from_user.id 
+  global url
   url = message.text  
   cmd(f'mkdir downloads')
   message.reply(
