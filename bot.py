@@ -5,6 +5,13 @@ import subprocess
 import shutil
 from pyrogram.types import InlineKeyboardMarkup , InlineKeyboardButton , ReplyKeyboardMarkup , CallbackQuery
 
+CHOOSE_UR_LANG = " Choose Your folmula ! "
+CHOOSE_UR_LANG_BUTTONS = [
+    [InlineKeyboardButton("vid",callback_data="vid")],
+     [InlineKeyboardButton("aud",callback_data="aud")]
+]
+
+
 bot = Client(
     "myfirs",
     api_id=17983098,
@@ -13,7 +20,7 @@ bot = Client(
 )
 @bot.on_message(filters.command('start') & filters.private)
 def command1(bot,message):
-    bot.send_message(message.chat.id, " السلام عليكم أنا بوت قص الصوتيات , فقط أرسل الصوتية هنا\n\n  لبقية البوتات هنا \n\n https://t.me/ibnAlQyyim/1120 ",disable_web_page_preview=True)
+    bot.send_message(message.chat.id, " االسلام عليكم أنا بوت التحميل من يوتيوب  ",disable_web_page_preview=True)
 
 @bot.on_message(filters.private & filters.incoming & filters.text  )
 def _telegram_file(client, message):
@@ -22,9 +29,21 @@ def _telegram_file(client, message):
   user_id = message.from_user.id 
   url = message.text
   
-  message.reply_text("جار التحميل\n\n hh:mm:ss/hh:mm:ss")
-  subprocess.call(['mkdir','downloads'])
-  subprocess.call(['yt-dlp','--extract-audio','--audio-format','mp3','-o','downloads/'+"%(title)s.%(ext)s",url])
-  subprocess.call(['uploadgram','-1001821573758','./downloads/'])
+  message.reply_text("ججار التحميل ")
+  cmd(f'mkdir downloads')
+
+@bot.on_callback_query()
+def callback_query(CLIENT,CallbackQuery):
+  if CallbackQuery.data == "vid":
+      cmd(f'yt-dlp -f 18 -o downloads/+"%(title)s.%(ext)s" {url}')
+  elif CallbackQuery.data == "EN":
+      cmd(f'yt-dlp --extract-audio --audio-format mp3  -o downloads/+"%(title)s.%(ext)s" {url}')
+  cmd(f'uploadgram -1001821573758 ./downloads/')
   shutil.rmtree('./downloads/')
+  CallbackQuery.edit_message_text(
+      
+      "تم التنزيل "
+  )   
+
+
 bot.run()
