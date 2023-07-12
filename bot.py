@@ -40,7 +40,7 @@ def _telegram_file(client, message):
 @bot.on_callback_query()
 def callback_query(CLIENT,CallbackQuery):
   if CallbackQuery.data == "vid":
-      cmd(f'yt-dlp -f 18 -o downloads/+"%(title)s.%(ext)s" {url}')
+      cmd(f'yt-dlp -f 22 -o downloads/+"%(title)s.%(ext)s" {url}')
   elif CallbackQuery.data == "EN":
       cmd(f'yt-dlp --extract-audio --audio-format mp3  -o downloads/+"%(title)s.%(ext)s" {url}')
   cmd(f'uploadgram -1001821573758 ./downloads/')
