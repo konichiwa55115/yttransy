@@ -50,7 +50,7 @@ def callback_query(CLIENT,CallbackQuery):
       cmd(f'yt-dlp -f 22 -o downloads/+"%(title)s.%(ext)s" {url}')
   elif CallbackQuery.data == "aud":
       cmd(f'yt-dlp --extract-audio --audio-format mp3  -o downloads/+"%(title)s.%(ext)s" {url}')
-  cmd(f'uploadgram -1001821573758 ./downloads/')
+  cmd(f'sudo uploadgram -1001821573758 ./downloads/')
   shutil.rmtree('./downloads/')
   CallbackQuery.edit_message_text(
       
