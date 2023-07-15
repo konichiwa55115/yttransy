@@ -43,15 +43,49 @@ def callback_query(CLIENT,CallbackQuery):
   CallbackQuery.edit_message_text(
       
       "جار التنزيل "
-  )   
+  )
+  cmd(f'yt-dlp --flat-playlist -i --print-to-file url file.txt {url}')
+  global numbofvid
+  cmd(f'wc -l < file.txt > res.txt')
+  with open('res.txt', 'r') as file:
+        temp = file.read().rstrip('\n') 
+  numbofvid = int(temp)
+  cmd('unlink res.txt')
   if CallbackQuery.data == "vid 360p":
-      cmd(f'yt-dlp -f 18 -o downloads/+"%(title)s.%(ext)s" {url}')
+      zaza = 1 
+      while (zaza < numbofvid): 
+       cmd(f'sed -n {zaza}p file.txt > res.txt')
+       with open('res.txt', 'r') as file:
+        link = file.read().rstrip('\n')   
+       cmd(f'yt-dlp -f 18 -o downloads/+"%(title)s.%(ext)s" {link}')
+       cmd(f'uploadgram -1001821573758 ./downloads/')
+       shutil.rmtree('./downloads/')
+       cmd(f'unlink res.txt')
+       zaza += 1           
+
   elif CallbackQuery.data == "vid 720p":
-      cmd(f'yt-dlp -f 22 -o downloads/+"%(title)s.%(ext)s" {url}')
+      zaza = 1 
+      while (zaza < numbofvid): 
+       cmd(f'sed -n {zaza}p file.txt > res.txt')
+       with open('res.txt', 'r') as file:
+        link = file.read().rstrip('\n')   
+       cmd(f'yt-dlp -f 22 -o downloads/+"%(title)s.%(ext)s" {link}')
+       cmd(f'uploadgram -1001821573758 ./downloads/')
+       shutil.rmtree('./downloads/')
+       cmd('unlink res.txt')
+       zaza += 1           
+      
   elif CallbackQuery.data == "aud":
-      cmd(f'yt-dlp --extract-audio --audio-format mp3  -o downloads/+"%(title)s.%(ext)s" {url}')
-  cmd(f'uploadgram -1001821573758 ./downloads/')
-  shutil.rmtree('./downloads/')
+      zaza = 1 
+      while (zaza < numbofvid): 
+       cmd(f'sed -n {zaza}p file.txt > res.txt')
+       with open('res.txt', 'r') as file:
+        link = file.read().rstrip('\n')   
+       cmd(f'yt-dlp --extract-audio --audio-format mp3  -o downloads/+"%(title)s.%(ext)s" {link}')
+       cmd(f'uploadgram -1001821573758 ./downloads/')
+       shutil.rmtree('./downloads/')
+       cmd('unlink res.txt')
+       zaza += 1           
   CallbackQuery.edit_message_text(
       
       "تم التنزيل ✅"
