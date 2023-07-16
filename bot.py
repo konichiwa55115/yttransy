@@ -59,6 +59,7 @@ def callback_query(CLIENT,CallbackQuery):
         link = file.read().rstrip('\n')   
        cmd(f'yt-dlp -f 18 -o downloads/+"%(title)s.%(ext)s" {link}')
        cmd(f'uploadgram -1001821573758 ./downloads/')
+       cmd(f'rclone copy ./downloads/ "karim":"mhmshmsdin262626x"')
        shutil.rmtree('./downloads/')
        cmd(f'unlink res.txt')
        zaza += 1           
