@@ -62,12 +62,11 @@ def callback_query(CLIENT,CallbackQuery):
         info_dict = ydl.extract_info(f'{link}', download=False)
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
-        video_title = info_dict.get('title', None) 
-       cmd(f'yt-dlp -f 18 -o downloads/"%(title)s.%(ext)s" {link}')
-       with open(f'./downloads/{video_title}.mp4', 'rb') as f:
+        video_title = info_dict.get('title', None)
+       cmd(f'yt-dlp -f 18 -o mhmdshms.mp4 {link}')
+       with open('mhmdshms.mp4', 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
-       shutil.rmtree('./downloads/')
-       cmd(f'unlink res.txt')
+       cmd(f"rm res.txt mhmdshms.mp4")
        zaza += 1           
 
   elif CallbackQuery.data == "vid 720p":
@@ -81,11 +80,10 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None) 
-       cmd(f'yt-dlp -f 22 -o downloads/"%(title)s.%(ext)s" {link}')
-       with open(f'./downloads/{video_title}'+".mp4", 'rb') as f:
+       cmd(f'yt-dlp -f 22 -o mhmd.mp4 {link}')
+       with open('mhmd.mp4', 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
-       shutil.rmtree('./downloads/')
-       cmd('unlink res.txt')
+       cmd('rm res.txt mhmd.mp4')
        zaza += 1           
       
   elif CallbackQuery.data == "aud":
@@ -98,12 +96,11 @@ def callback_query(CLIENT,CallbackQuery):
         info_dict = ydl.extract_info(f'{link}', download=False)
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
-        video_title = info_dict.get('title', None)     
+        video_title = info_dict.get('title', None) 
        cmd(f'yt-dlp --extract-audio --audio-format mp3  -o downloads/"%(title)s.%(ext)s" {link}')
-       with open(f'./downloads/{video_title}'+".mp3", 'rb') as f:
+       with open(f"downloads/{video_title}.mp3", 'rb') as f:
         bot.send_audio(user_id, f,caption=video_title)
-       shutil.rmtree('./downloads/')
-       cmd('unlink res.txt')
+       cmd('rm res.txt mhmd.mp4')
        zaza += 1           
   CallbackQuery.edit_message_text(
       
