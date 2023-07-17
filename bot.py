@@ -53,7 +53,7 @@ def callback_query(CLIENT,CallbackQuery):
   cmd('unlink res.txt')
   if CallbackQuery.data == "vid 360p":
       zaza = 1 
-      while (zaza < numbofvid): 
+      while (zaza <= numbofvid): 
        cmd(f'sed -n {zaza}p file.txt > res.txt')
        with open('res.txt', 'r') as file:
         link = file.read().rstrip('\n')   
@@ -65,7 +65,7 @@ def callback_query(CLIENT,CallbackQuery):
 
   elif CallbackQuery.data == "vid 720p":
       zaza = 1 
-      while (zaza < numbofvid): 
+      while (zaza <= numbofvid): 
        cmd(f'sed -n {zaza}p file.txt > res.txt')
        with open('res.txt', 'r') as file:
         link = file.read().rstrip('\n')   
@@ -77,7 +77,7 @@ def callback_query(CLIENT,CallbackQuery):
       
   elif CallbackQuery.data == "aud":
       zaza = 1 
-      while (zaza < numbofvid): 
+      while (zaza <= numbofvid): 
        cmd(f'sed -n {zaza}p file.txt > res.txt')
        with open('res.txt', 'r') as file:
         link = file.read().rstrip('\n')   
@@ -89,7 +89,7 @@ def callback_query(CLIENT,CallbackQuery):
   CallbackQuery.edit_message_text(
       
       "تم التنزيل ✅"
-  )   
-
+   )   
+  cmd(f'unlink file.txt')
 
 bot.run()
