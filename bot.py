@@ -28,7 +28,7 @@ def command1(bot,message):
 @bot.on_message(filters.private & filters.incoming & filters.text  )
 def _telegram_file(client, message):
 
-  
+  global user_id
   user_id = message.from_user.id 
   global url
   url = message.text  
@@ -58,8 +58,14 @@ def callback_query(CLIENT,CallbackQuery):
        cmd(f'sed -n {zaza}p file.txt > res.txt')
        with open('res.txt', 'r') as file:
         link = file.read().rstrip('\n')   
-       cmd(f'yt-dlp -f 18 -o downloads/+"%(title)s.%(ext)s" {link}')
-       cmd(f'uploadgram -1001821573758 ./downloads/')
+       with YoutubeDL() as ydl: 
+        info_dict = ydl.extract_info(f'{link}', download=False)
+        video_url = info_dict.get("url", None)
+        video_id = info_dict.get("id", None)
+        video_title = info_dict.get('title', None) 
+       cmd(f'yt-dlp -f 18 -o downloads/"%(title)s.%(ext)s" {link}')
+       with open(f'./downloads/{video_title}.mp4', 'rb') as f:
+        bot.send_video(user_id, f,caption=video_title)
        shutil.rmtree('./downloads/')
        cmd(f'unlink res.txt')
        zaza += 1           
@@ -75,9 +81,9 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None) 
-       cmd(f'yt-dlp -f 22 -o downloads/+"%(title)s.%(ext)s" {link}')
-       with open(f'downloads/{video_title}+".mp4"', 'rb') as f:
-        bot.send_video(user_id, f)
+       cmd(f'yt-dlp -f 22 -o downloads/"%(title)s.%(ext)s" {link}')
+       with open(f'./downloads/{video_title}'+".mp4", 'rb') as f:
+        bot.send_video(user_id, f,caption=video_title)
        shutil.rmtree('./downloads/')
        cmd('unlink res.txt')
        zaza += 1           
@@ -88,8 +94,14 @@ def callback_query(CLIENT,CallbackQuery):
        cmd(f'sed -n {zaza}p file.txt > res.txt')
        with open('res.txt', 'r') as file:
         link = file.read().rstrip('\n')   
-       cmd(f'yt-dlp --extract-audio --audio-format mp3  -o downloads/+"%(title)s.%(ext)s" {link}')
-       cmd(f'uploadgram -1001821573758 ./downloads/')
+       with YoutubeDL() as ydl: 
+        info_dict = ydl.extract_info(f'{link}', download=False)
+        video_url = info_dict.get("url", None)
+        video_id = info_dict.get("id", None)
+        video_title = info_dict.get('title', None)     
+       cmd(f'yt-dlp --extract-audio --audio-format mp3  -o downloads/"%(title)s.%(ext)s" {link}')
+       with open(f'./downloads/{video_title}'+".mp3", 'rb') as f:
+        bot.send_audio(user_id, f,caption=video_title)
        shutil.rmtree('./downloads/')
        cmd('unlink res.txt')
        zaza += 1           
