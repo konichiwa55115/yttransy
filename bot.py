@@ -5,6 +5,7 @@ import subprocess
 import shutil
 from os import system as cmd
 from pyrogram.types import InlineKeyboardMarkup , InlineKeyboardButton , ReplyKeyboardMarkup , CallbackQuery
+from yt_dlp import YoutubeDL
 
 CHOOSE_UR_LANG = " Choose Your folmula ! "
 CHOOSE_UR_LANG_BUTTONS = [
@@ -68,9 +69,15 @@ def callback_query(CLIENT,CallbackQuery):
       while (zaza <= numbofvid): 
        cmd(f'sed -n {zaza}p file.txt > res.txt')
        with open('res.txt', 'r') as file:
-        link = file.read().rstrip('\n')   
+        link = file.read().rstrip('\n')
+       with YoutubeDL() as ydl: 
+        info_dict = ydl.extract_info(f'{link}', download=False)
+        video_url = info_dict.get("url", None)
+        video_id = info_dict.get("id", None)
+        video_title = info_dict.get('title', None) 
        cmd(f'yt-dlp -f 22 -o downloads/+"%(title)s.%(ext)s" {link}')
-       cmd(f'uploadgram -1001821573758 ./downloads/')
+       with open(f'downloads/{video_title}+".mp4"', 'rb') as f:
+        bot.send_video(user_id, f)
        shutil.rmtree('./downloads/')
        cmd('unlink res.txt')
        zaza += 1           
