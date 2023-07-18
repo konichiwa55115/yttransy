@@ -46,6 +46,7 @@ def callback_query(CLIENT,CallbackQuery):
       "جار التنزيل "
   )
   cmd(f'yt-dlp --flat-playlist -i --print-to-file url file.txt {url}')
+  cmd('sed -i 1,50d file.txt')
   global numbofvid
   cmd(f'wc -l < file.txt > res.txt')
   with open('res.txt', 'r') as file:
@@ -62,7 +63,7 @@ def callback_query(CLIENT,CallbackQuery):
         info_dict = ydl.extract_info(f'{link}', download=False)
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
-        video_title = info_dict.get('title', None)
+        video_title = info_dict.get('title', None)  
        cmd(f'yt-dlp -f 18 --abort-on-error -o downloads/"%(title)s.%(ext)s" {link}')
        cmd('uploadgram -1001821573758 ./downloads/ ')
        cmd(f"rm res.txt")
