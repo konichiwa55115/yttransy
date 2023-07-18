@@ -66,6 +66,9 @@ def callback_query(CLIENT,CallbackQuery):
         video_title = info_dict.get('title', None)  
        cmd(f'yt-dlp -f 18 --abort-on-error -o downloads/"%(title)s.%(ext)s" {link}')
        cmd('uploadgram -1001821573758 ./downloads/ ')
+       cmd("rclone copy ./downloads/ 'karim':'mhmdshmd511551x' --progress ")
+       shutil.rmtree('./downloads/')
+
        cmd(f"rm res.txt")
        zaza += 1           
 
