@@ -63,10 +63,12 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None)
-       cmd(f'yt-dlp -f 18 -o mhmdshms.mp4 {link}')
-       with open('mhmdshms.mp4', 'rb') as f:
-        bot.send_video(user_id, f,caption=video_title)
-       cmd(f"rm res.txt mhmdshms.mp4")
+       try :
+           cmd(f'yt-dlp -f 18 -o downloads/"%(title)s.%(ext)s" {link}')
+       except Exception:
+           pass
+       cmd('uploadgram -1001821573758 ./downloads/ ')
+       cmd(f"rm res.txt")
        zaza += 1           
 
   elif CallbackQuery.data == "vid 720p":
