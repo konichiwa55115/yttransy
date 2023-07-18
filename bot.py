@@ -63,7 +63,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None)
-       cmd(f'yt-dlp -f 18 --ignore-errors --no-abort-on-error -o downloads/"%(title)s.%(ext)s" {link}')
+       cmd(f'yt-dlp -f 18 --abort-on-error -o downloads/"%(title)s.%(ext)s" {link}')
        cmd('uploadgram -1001821573758 ./downloads/ ')
        cmd(f"rm res.txt")
        zaza += 1           
