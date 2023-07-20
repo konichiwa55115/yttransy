@@ -98,7 +98,7 @@ def callback_query(CLIENT,CallbackQuery):
        cmd('uploadgram -1001821573758 ./downloads/ ')
        cmd("rclone copy ./downloads/ 'karim':'angary51515151sx' --progress ")
        shutil.rmtree('./downloads/')
-       cmd('rm res.txt )
+       cmd('rm res.txt' )
        zaza += 1           
   CallbackQuery.edit_message_text(
       
