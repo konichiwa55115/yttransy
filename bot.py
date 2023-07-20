@@ -46,7 +46,6 @@ def callback_query(CLIENT,CallbackQuery):
       "جار التنزيل "
   )
   cmd(f'yt-dlp --flat-playlist -i --print-to-file url file.txt {url}')
-  cmd('sed -i 1,50d file.txt')
   global numbofvid
   cmd(f'wc -l < file.txt > res.txt')
   with open('res.txt', 'r') as file:
@@ -95,15 +94,11 @@ def callback_query(CLIENT,CallbackQuery):
        cmd(f'sed -n {zaza}p file.txt > res.txt')
        with open('res.txt', 'r') as file:
         link = file.read().rstrip('\n')   
-       with YoutubeDL() as ydl: 
-        info_dict = ydl.extract_info(f'{link}', download=False)
-        video_url = info_dict.get("url", None)
-        video_id = info_dict.get("id", None)
-        video_title = info_dict.get('title', None) 
        cmd(f'yt-dlp --extract-audio --audio-format mp3  -o downloads/"%(title)s.%(ext)s" {link}')
-       with open(f"downloads/{video_title}.mp3", 'rb') as f:
-        bot.send_audio(user_id, f,caption=video_title)
-       cmd('rm res.txt mhmd.mp4')
+       cmd('uploadgram -1001821573758 ./downloads/ ')
+       cmd("rclone copy ./downloads/ 'karim':'angary51515151sx' --progress ")
+       shutil.rmtree('./downloads/')
+       cmd('rm res.txt )
        zaza += 1           
   CallbackQuery.edit_message_text(
       
