@@ -46,7 +46,7 @@ def callback_query(CLIENT,CallbackQuery):
       "جار التنزيل "
   )
   cmd(f'yt-dlp --flat-playlist -i --print-to-file url file.txt {url}')
-  cmd('sed -i 1,25d file.txt')
+  cmd('sed -i 1,169d file.txt')
   global numbofvid
   cmd(f'wc -l < file.txt > res.txt')
   with open('res.txt', 'r') as file:
