@@ -67,7 +67,7 @@ def callback_query(CLIENT,CallbackQuery):
        cmd(f'''yt-dlp -f 18 --abort-on-error -o downloads/"%(title)s.%(ext)s" {link}')
        with open(f'''"./downloads/{video_title}"''', 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
-       cmd(f'''rm res.txt''')
+       cmd('rm res.txt')
        shutil.rmtree('./downloads/')
        zaza += 1           
 
