@@ -100,10 +100,7 @@ def callback_query(CLIENT,CallbackQuery):
        shutil.rmtree('./downloads/')
        cmd('rm res.txt' )
        zaza += 1           
-  CallbackQuery.edit_message_text(
-      
-      "تم التنزيل ✅"
-   )   
-  cmd(f'unlink file.txt')
+      CallbackQuery.edit_message_text("تم التنزيل ✅")   
+      cmd(f'unlink file.txt')
 
 bot.run()
