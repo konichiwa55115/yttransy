@@ -64,7 +64,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None)  
-       cmd(f'''yt-dlp -f 18 --abort-on-error -o downloads/"%(title)s.%(ext)s" {link}')
+       cmd(f'yt-dlp -f 18 --abort-on-error -o downloads/"%(title)s.%(ext)s" {link}')
        with open(f'''"./downloads/{video_title}"''', 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
        cmd('rm res.txt')
