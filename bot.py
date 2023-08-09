@@ -64,8 +64,8 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None)  
-       cmd(f'yt-dlp -f 18 --abort-on-error -o downloads/"%(title)s.%(ext)s" {link}')
-       with open(f'''./downloads/"{video_title}"''', 'rb') as f:
+       cmd(f'''yt-dlp -f 18 --abort-on-error -o "downloads/{video_title}.mp4" {link}''')
+       with open(f"./downloads/{video_title}.mp4", 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
        cmd('rm res.txt')
        shutil.rmtree('./downloads/')
@@ -82,8 +82,8 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None) 
-       cmd(f'yt-dlp -f 22 -o downloads/"%(title)s.%(ext)s" {link}')
-       with open(f'''./downloads/"{video_title}"''', 'rb') as f:
+       cmd(f'''yt-dlp -f 22 -o "downloads/{video_title}.mp4" {link}''')
+       with open(f"./downloads/{video_title}.mp4", 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
        cmd('rm res.txt')
        shutil.rmtree('./downloads/')
@@ -95,9 +95,9 @@ def callback_query(CLIENT,CallbackQuery):
        cmd(f'sed -n {zaza}p file.txt > res.txt')
        with open('res.txt', 'r') as file:
         link = file.read().rstrip('\n')   
-       cmd(f'yt-dlp --extract-audio --audio-format mp3  -o downloads/"%(title)s.%(ext)s" {link}')
-       cmd('uploadgram -1001821573758 ./downloads/ ')
-       cmd("rclone copy ./downloads/ 'karim':'angary51515151sx' --progress ")
+       cmd(f'''yt-dlp --extract-audio --audio-format mp3  -o "downloads/{video_title}.mp3" {link}''')
+       with open(f"./downloads/{video_title}.mp3", 'rb') as f:
+        bot.send_audio(user_id, f,caption=video_title)
        shutil.rmtree('./downloads/')
        cmd('rm res.txt' )
        zaza += 1           
