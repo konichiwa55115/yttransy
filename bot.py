@@ -100,7 +100,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None) 
-       cmd(f'''yt-dlp --extract-audio --audio-format mp3  -o "downloads/{video_title}.mp3" {link}''')
+       cmd(f'''yt-dlp --extract-audio --audio-format mp3  -o "downloads/{video_title}.mp4" {link}''')
        with open(f"./downloads/{video_title}.mp3", 'rb') as f:
         bot.send_audio(user_id, f,caption=video_title)
        shutil.rmtree('./downloads/')
