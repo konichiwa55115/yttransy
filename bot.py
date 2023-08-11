@@ -64,11 +64,10 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None)  
-       cmd(f'''yt-dlp -f 18 --abort-on-error -o "downloads/{video_title}.mp4" {link}''')
-       with open(f"./downloads/{video_title}.mp4", 'rb') as f:
+       cmd(f'''yt-dlp -f 18 --abort-on-error -o "{video_title}.mp4" {link}''')
+       with open(f"{video_title}.mp4", 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
-       cmd('rm res.txt')
-       shutil.rmtree('./downloads/')
+       cmd('''rm res.txt "{video_title}.mp4" ''')
        zaza += 1           
 
   elif CallbackQuery.data == "vid 720p":
@@ -82,11 +81,10 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None) 
-       cmd(f'''yt-dlp -f 22 -o "downloads/{video_title}.mp4" {link}''')
-       with open(f"./downloads/{video_title}.mp4", 'rb') as f:
+       cmd(f'''yt-dlp -f 22 -o "{video_title}.mp4" {link}''')
+       with open(f"{video_title}.mp4", 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
-       cmd('rm res.txt')
-       shutil.rmtree('./downloads/')
+       cmd('''rm res.txt "{video_title}.mp4"''')
        zaza += 1           
       
   elif CallbackQuery.data == "aud":
