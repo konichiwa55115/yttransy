@@ -66,7 +66,9 @@ def callback_query(CLIENT,CallbackQuery):
        with open(f"{video_title}.mp4", 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
        cmd('''rm res.txt "{video_title}.mp4" ''')
-       zaza += 1           
+       zaza += 1  
+      CallbackQuery.edit_message_text("تم التنزيل ✅")   
+      cmd(f'unlink file.txt')
 
   elif CallbackQuery.data == "vid 720p":
       zaza = 1 
@@ -83,8 +85,10 @@ def callback_query(CLIENT,CallbackQuery):
        with open(f"{video_title}.mp4", 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
        cmd('''rm res.txt "{video_title}.mp4"''')
-       zaza += 1           
-      
+       zaza += 1  
+      CallbackQuery.edit_message_text("تم التنزيل ✅")   
+      cmd(f'unlink file.txt')
+
   elif CallbackQuery.data == "aud":
       zaza = 1 
       while (zaza <= numbofvid): 
