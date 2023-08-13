@@ -32,6 +32,7 @@ def _telegram_file(client, message):
   user_id = message.from_user.id 
   global url
   url = message.text  
+  cmd(f'''yt-dlp --flat-playlist -i --print-to-file file.txt {url}''')
   message.reply(
              text = CHOOSE_UR_LANG,
              reply_markup = InlineKeyboardMarkup(CHOOSE_UR_LANG_BUTTONS)
@@ -44,8 +45,6 @@ def callback_query(CLIENT,CallbackQuery):
       
       "جار التنزيل "
   )
-  cmd(f'''yt-dlp --flat-playlist -i --print-to-file {url} file.txt''')
-  
   global numbofvid
   cmd(f'wc -l < file.txt > res.txt')
   with open('res.txt', 'r') as file:
