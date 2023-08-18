@@ -35,9 +35,9 @@ bot = Client(
 @bot.on_message(filters.command('start') & filters.private)
 def command1(bot,message):
     bot.send_message(message.chat.id, " االسلام عليكم أنا بوت التحميل من يوتيوب  ",disable_web_page_preview=True)
-@bot.on_message(filters.command('cont') & filters.private)
+@bot.on_message(filters.command('clear') & filters.private)
 def command2(bot,message):
-    bot.reply_text("الآن أدخل عدد الفيديوهات التي تم تحميلها بالفعل ",reply_markup=ForceReply(True))
+    cmd('rm file.txt')
 @bot.on_message(filters.private & filters.reply )
 async def refunc(client,message):
    if (message.reply_to_message.reply_markup) and isinstance(message.reply_to_message.reply_markup, ForceReply)  :
