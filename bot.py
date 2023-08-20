@@ -89,7 +89,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None)  
-       cmd(f'''yt-dlp -f 18 --ignore-errors --no-abort-on-error -o "{video_title}.mp4" {link}''')
+       cmd(f'''yt-dlp -f 18 --ignore-errors  -o "{video_title}.mp4" {link}''')
        with open(f"{video_title}.mp4", 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
        cmd('''rm res.txt "{video_title}.mp4" ''')
@@ -108,7 +108,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None) 
-       cmd(f'''yt-dlp -f 22 --ignore-errors --no-abort-on-error -o "{video_title}.mp4" {link}''')
+       cmd(f'''yt-dlp -f 22 --ignore-errors  -o "{video_title}.mp4" {link}''')
        with open(f"{video_title}.mp4", 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
        cmd('''rm res.txt "{video_title}.mp4"''')
@@ -127,7 +127,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None) 
-       cmd(f'''yt-dlp --ignore-errors --no-abort-on-error --extract-audio --audio-format mp3  -o "{video_title}" {link}''')
+       cmd(f'''yt-dlp --ignore-errors  --extract-audio --audio-format mp3  -o "{video_title}" {link}''')
        with open(f"{video_title}.mp3", 'rb') as f:
         bot.send_audio(user_id, f,caption=video_title)
        cmd(f'''rm res.txt "{video_title}" "{video_title}.mp3"''' )
@@ -145,7 +145,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None)  
-       cmd(f'''yt-dlp -f 18 --ignore-errors --no-abort-on-error -o "{video_title}.mp4" {link}''')
+       cmd(f'''yt-dlp -f 18 --ignore-errors  -o "{video_title}.mp4" {link}''')
        with open(f"{video_title}.mp4", 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
        cmd('''rm res.txt "{video_title}.mp4" ''')
@@ -164,7 +164,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None) 
-       cmd(f'''yt-dlp -f 22 --ignore-errors --no-abort-on-error -o "{video_title}.mp4" {link}''')
+       cmd(f'''yt-dlp -f 22 --ignore-errors  -o "{video_title}.mp4" {link}''')
        with open(f"{video_title}.mp4", 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
        cmd('''rm res.txt "{video_title}.mp4"''')
@@ -183,7 +183,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None) 
-       cmd(f'''yt-dlp --ignore-errors --no-abort-on-error --extract-audio --audio-format mp3  -o "{video_title}" {link}''')
+       cmd(f'''yt-dlp --ignore-errors  --extract-audio --audio-format mp3  -o "{video_title}" {link}''')
        with open(f"{video_title}.mp3", 'rb') as f:
         bot.send_audio(user_id, f,caption=video_title)
        cmd(f'''rm res.txt "{video_title}" "{video_title}.mp3"''' )
