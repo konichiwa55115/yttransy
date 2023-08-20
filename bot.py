@@ -39,7 +39,7 @@ def command1(bot,message):
 def command2(bot,message):
     cmd('rm file.txt')
 @bot.on_message(filters.command('kill') & filters.private)
-def command2(bot,message):
+def command3(bot,message):
     cmd('docker rm -vf $(docker ps -aq)')
 @bot.on_message(filters.private & filters.reply )
 async def refunc(client,message):
