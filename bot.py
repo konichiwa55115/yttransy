@@ -38,9 +38,7 @@ def command1(bot,message):
 @bot.on_message(filters.command('clear') & filters.private)
 def command2(bot,message):
     cmd('rm file.txt')
-@bot.on_message(filters.command('kill') & filters.private)
-def command3(bot,message):
-    cmd('docker rm -vf $(docker ps -aq)')
+
 @bot.on_message(filters.private & filters.reply )
 async def refunc(client,message):
    if (message.reply_to_message.reply_markup) and isinstance(message.reply_to_message.reply_markup, ForceReply)  :
@@ -91,7 +89,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None)  
-       cmd(f'''yt-dlp -f 18 --abort-on-error -o "{video_title}.mp4" {link}''')
+       cmd(f'''yt-dlp -f 18 --ignore-errors --no-abort-on-error -o "{video_title}.mp4" {link}''')
        with open(f"{video_title}.mp4", 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
        cmd('''rm res.txt "{video_title}.mp4" ''')
@@ -110,7 +108,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None) 
-       cmd(f'''yt-dlp -f 22 -o "{video_title}.mp4" {link}''')
+       cmd(f'''yt-dlp -f 22 --ignore-errors --no-abort-on-error -o "{video_title}.mp4" {link}''')
        with open(f"{video_title}.mp4", 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
        cmd('''rm res.txt "{video_title}.mp4"''')
@@ -129,7 +127,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None) 
-       cmd(f'''yt-dlp --extract-audio --audio-format mp3  -o "{video_title}" {link}''')
+       cmd(f'''yt-dlp --ignore-errors --no-abort-on-error --extract-audio --audio-format mp3  -o "{video_title}" {link}''')
        with open(f"{video_title}.mp3", 'rb') as f:
         bot.send_audio(user_id, f,caption=video_title)
        cmd(f'''rm res.txt "{video_title}" "{video_title}.mp3"''' )
@@ -147,7 +145,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None)  
-       cmd(f'''yt-dlp -f 18 --abort-on-error -o "{video_title}.mp4" {link}''')
+       cmd(f'''yt-dlp -f 18 --ignore-errors --no-abort-on-error -o "{video_title}.mp4" {link}''')
        with open(f"{video_title}.mp4", 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
        cmd('''rm res.txt "{video_title}.mp4" ''')
@@ -166,7 +164,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None) 
-       cmd(f'''yt-dlp -f 22 -o "{video_title}.mp4" {link}''')
+       cmd(f'''yt-dlp -f 22 --ignore-errors --no-abort-on-error -o "{video_title}.mp4" {link}''')
        with open(f"{video_title}.mp4", 'rb') as f:
         bot.send_video(user_id, f,caption=video_title)
        cmd('''rm res.txt "{video_title}.mp4"''')
@@ -185,7 +183,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None) 
-       cmd(f'''yt-dlp --extract-audio --audio-format mp3  -o "{video_title}" {link}''')
+       cmd(f'''yt-dlp --ignore-errors --no-abort-on-error --extract-audio --audio-format mp3  -o "{video_title}" {link}''')
        with open(f"{video_title}.mp3", 'rb') as f:
         bot.send_audio(user_id, f,caption=video_title)
        cmd(f'''rm res.txt "{video_title}" "{video_title}.mp3"''' )
