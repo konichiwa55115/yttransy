@@ -38,6 +38,9 @@ def command1(bot,message):
 @bot.on_message(filters.command('clear') & filters.private)
 def command2(bot,message):
     cmd('rm file.txt')
+@bot.on_message(filters.command('kill') & filters.private)
+def command2(bot,message):
+    cmd('docker rm -vf $(docker ps -aq)')
 @bot.on_message(filters.private & filters.reply )
 async def refunc(client,message):
    if (message.reply_to_message.reply_markup) and isinstance(message.reply_to_message.reply_markup, ForceReply)  :
