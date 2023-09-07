@@ -133,7 +133,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_url = info_dict.get("url", None)
         video_id = info_dict.get("id", None)
         video_title = info_dict.get('title', None) 
-        mp3file = video_title.rstrip("|")
+        mp3file = video_title.rstrip("|-")
        try :
         cmd(f'''yt-dlp -ciw  --extract-audio --audio-format mp3  -o "{mp3file}" "{link}"''')
         with open(f"{mp3file}.mp3", 'rb') as f:
