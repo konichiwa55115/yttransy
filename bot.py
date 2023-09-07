@@ -138,7 +138,7 @@ def callback_query(CLIENT,CallbackQuery):
         cmd(f'''yt-dlp -ciw  --extract-audio --audio-format mp3  -o "{mp3file}" "{link}"''')
         with open(f"{mp3file}.mp3", 'rb') as f:
          bot.send_audio(user_id, f,caption=video_title)
-        cmd(f'''rm res.txt "{video_title}.mp3"''' )
+        cmd(f'''rm res.txt "{mp3file}.mp3"''' )
        except FileNotFoundError: 
          pass  
        zaza += 1           
