@@ -135,11 +135,9 @@ def callback_query(CLIENT,CallbackQuery):
         video_title = info_dict.get('title', None) 
         mp3file = video_title.rstrip("|-")
        try :
-        cmd(f'''yt-dlp -ciw  --extract-audio --audio-format mp3  -o \"kaka\" "{link}"''')
-        cmd(f'''mv kaka.mp3 "{mp3file}.mp3"''')
-        with open(f'''{mp3file}.mp3''', 'rb') as f:
-         bot.send_audio(user_id, f,caption=video_title)
-        cmd(f'''rm res.txt "{mp3file}.mp3"''' )
+        cmd(f'''yt-dlp -ciw  --extract-audio --audio-format mp3  -o downloads/"%(title)s.%(ext)s"  "{link}"''')
+        cmd(f'''uploadgram -1001821573758 downloads''')
+        cmd(f'''rm -r ./downloads"''' )
        except FileNotFoundError: 
          pass  
        zaza += 1           
