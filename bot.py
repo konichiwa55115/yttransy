@@ -135,7 +135,7 @@ def callback_query(CLIENT,CallbackQuery):
         video_title = info_dict.get('title', None) 
        try :
         cmd(f'''yt-dlp -ciw  --extract-audio --audio-format mp3  -o "{video_title}" "{link}"''')
-        with open(f"{video_title}.mp3", 'rb') as f:
+        with open(f'''{video_title}.mp3''', 'rb') as f:
          bot.send_audio(user_id, f,caption=video_title)
         cmd(f'''rm res.txt "{video_title}.mp3"''' )
        except FileNotFoundError: 
