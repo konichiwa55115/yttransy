@@ -129,12 +129,6 @@ def callback_query(CLIENT,CallbackQuery):
        cmd(f'sed -n {zaza}p file.txt > res.txt')
        with open('res.txt', 'r') as file:
         link = file.read().rstrip('\n')   
-       with YoutubeDL() as ydl: 
-        info_dict = ydl.extract_info(f'{link}', download=False)
-        video_url = info_dict.get("url", None)
-        video_id = info_dict.get("id", None)
-        video_title = info_dict.get('title', None) 
-        mp3file = video_title.rstrip("|-")
        try :
         cmd(f'''yt-dlp -ciw  --extract-audio --audio-format mp3  -o downloads/"%(title)s.%(ext)s"  "{link}"''')
         cmd(f'''uploadgram -1001821573758 downloads''')
