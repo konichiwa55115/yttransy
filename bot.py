@@ -123,6 +123,7 @@ def callback_query(CLIENT,CallbackQuery):
       cmd(f'unlink file.txt')
 
   elif CallbackQuery.data == "aud":
+      CallbackQuery.edit_message_text("تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0 ")   
       zaza = 1
       while (zaza <= numbofvid): 
        cmd(f'sed -n {zaza}p file.txt > res.txt')
@@ -141,7 +142,7 @@ def callback_query(CLIENT,CallbackQuery):
        except FileNotFoundError: 
          pass  
        zaza += 1           
-      CallbackQuery.edit_message_text("تم التنزيل ✅")   
+      CallbackQuery.edit_message_text("تم التنزيل ✅ تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0 ")   
       cmd(f'unlink file.txt')
   elif CallbackQuery.data == "vidcont360p":
       zaza = int(hazard) +1
