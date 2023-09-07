@@ -188,20 +188,15 @@ def callback_query(CLIENT,CallbackQuery):
        cmd(f'sed -n {zaza}p file.txt > res.txt')
        with open('res.txt', 'r') as file:
         link = file.read().rstrip('\n')   
-       with YoutubeDL() as ydl: 
-        info_dict = ydl.extract_info(f'{link}', download=False)
-        video_url = info_dict.get("url", None)
-        video_id = info_dict.get("id", None)
-        video_title = info_dict.get('title', None) 
-       try: 
-        cmd(f'''yt-dlp -ciw  --extract-audio --audio-format mp3  -o "{video_title}" "{link}"''')
-        with open(f'''{video_title}.mp3''', 'rb') as f:
-         bot.send_audio(user_id, f,caption=video_title)
-        cmd(f'''rm res.txt "{video_title}.mp3"''' )
+       
+       try :
+        cmd(f'''yt-dlp -ciw  --extract-audio --audio-format mp3  -o downloads/"%(title)s.%(ext)s"  "{link}"''')
+        cmd(f'''uploadgram -1001821573758 downloads''')
+        cmd(f'''rm -r ./downloads/''' )
        except FileNotFoundError: 
          pass  
        zaza += 1           
-      CallbackQuery.edit_message_text("تم التنزيل ✅")   
+      CallbackQuery.edit_message_text("تم التنزيل ✅ تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0 ")   
       cmd(f'unlink file.txt')
   elif CallbackQuery.data == "frmstrt":
       felo.reply_text(
