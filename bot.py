@@ -138,7 +138,7 @@ def callback_query(CLIENT,CallbackQuery):
        try :
         cmd(f'''yt-dlp -ciw  --extract-audio --audio-format mp3  -o downloads/"%(title)s.%(ext)s"  "{link}"''')
         cmd(f'''uploadgram -1001821573758 downloads''')
-        cmd(f'''rm -r ./downloads/"''' )
+        cmd(f'''rm -r ./downloads/''' )
        except FileNotFoundError: 
          pass  
        zaza += 1           
