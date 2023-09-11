@@ -80,47 +80,38 @@ def callback_query(CLIENT,CallbackQuery):
   numbofvid = int(temp)
   cmd('unlink res.txt')
   if CallbackQuery.data == "vid 360p":
+      CallbackQuery.edit_message_text("تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0 ")   
       zaza = 1
       while (zaza <= numbofvid): 
        cmd(f'sed -n {zaza}p file.txt > res.txt')
        with open('res.txt', 'r') as file:
         link = file.read().rstrip('\n')   
-       with YoutubeDL() as ydl: 
-        info_dict = ydl.extract_info(f'{link}', download=False)
-        video_url = info_dict.get("url", None)
-        video_id = info_dict.get("id", None)
-        video_title = info_dict.get('title', None)  
+       
        try:
-        cmd(f'''yt-dlp -f 18 -ciw  -o "{video_title}.mp4" "{link}"''')
-        with open(f"{video_title}.mp4", 'rb') as f:
-         bot.send_video(user_id, f,caption=video_title)
-        cmd('''rm res.txt "{video_title}.mp4" ''')
+        cmd(f'''yt-dlp -f 18 -ciw  -o downloads/"%(title)s.%(ext)s" "{link}"''')
+        cmd(f'''uploadgram -1001821573758 downloads''')
+        shutil.rmtree('./downloads/')
        except FileNotFoundError: 
          pass  
        zaza += 1  
-      CallbackQuery.edit_message_text("تم التنزيل ✅")   
+      CallbackQuery.edit_message_text("تم التنزيل ✅  تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0  ")   
       cmd(f'unlink file.txt')
 
   elif CallbackQuery.data == "vid 720p":
+      CallbackQuery.edit_message_text("تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0 ")   
       zaza = 1
       while (zaza <= numbofvid): 
        cmd(f'sed -n {zaza}p file.txt > res.txt')
        with open('res.txt', 'r') as file:
         link = file.read().rstrip('\n')
-       with YoutubeDL() as ydl: 
-        info_dict = ydl.extract_info(f'{link}', download=False)
-        video_url = info_dict.get("url", None)
-        video_id = info_dict.get("id", None)
-        video_title = info_dict.get('title', None) 
        try:
-        cmd(f'''yt-dlp -f 22 -ciw  -o "{video_title}.mp4" "{link}"''')
-        with open(f"{video_title}.mp4", 'rb') as f:
-         bot.send_video(user_id, f,caption=video_title)
-        cmd('''rm res.txt "{video_title}.mp4"''')
+        cmd(f'''yt-dlp -f 22 -ciw  -o downloads/"%(title)s.%(ext)s" "{link}"''')
+        cmd(f'''uploadgram -1001821573758 downloads''')
+        shutil.rmtree('./downloads/')
        except FileNotFoundError: 
          pass  
        zaza += 1  
-      CallbackQuery.edit_message_text("تم التنزيل ✅")   
+      CallbackQuery.edit_message_text("تم التنزيل ✅  تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0 ")   
       cmd(f'unlink file.txt')
 
   elif CallbackQuery.data == "aud":
@@ -140,50 +131,44 @@ def callback_query(CLIENT,CallbackQuery):
       CallbackQuery.edit_message_text("تم التنزيل ✅ تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0 ")   
       cmd(f'unlink file.txt')
   elif CallbackQuery.data == "vidcont360p":
+      CallbackQuery.edit_message_text("تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0 ")   
       zaza = int(hazard) +1
       while (zaza <= numbofvid): 
        cmd(f'sed -n {zaza}p file.txt > res.txt')
        with open('res.txt', 'r') as file:
         link = file.read().rstrip('\n')   
-       with YoutubeDL() as ydl: 
-        info_dict = ydl.extract_info(f'{link}', download=False)
-        video_url = info_dict.get("url", None)
-        video_id = info_dict.get("id", None)
-        video_title = info_dict.get('title', None)  
+       
        try:
-        cmd(f'''yt-dlp -f 18 -ciw  -o "{video_title}.mp4" "{link}"''')
-        with open(f"{video_title}.mp4", 'rb') as f:
-         bot.send_video(user_id, f,caption=video_title)
-        cmd('''rm res.txt "{video_title}.mp4" ''')
+        cmd(f'''yt-dlp -f 18 -ciw  -o downloads/"%(title)s.%(ext)s" "{link}"''')
+        cmd(f'''uploadgram -1001821573758 downloads''')
+        shutil.rmtree('./downloads/')
+        cmd('''rm res.txt''')
        except FileNotFoundError: 
          pass  
        zaza += 1  
-      CallbackQuery.edit_message_text("تم التنزيل ✅")   
+      CallbackQuery.edit_message_text("تم التنزيل ✅  تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0 ")   
       cmd(f'unlink file.txt')
 
   elif CallbackQuery.data == "vidcont720p":
+      CallbackQuery.edit_message_text("تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0 ")   
       zaza = int(hazard) +1
       while (zaza <= numbofvid): 
        cmd(f'sed -n {zaza}p file.txt > res.txt')
        with open('res.txt', 'r') as file:
         link = file.read().rstrip('\n')
-       with YoutubeDL() as ydl: 
-        info_dict = ydl.extract_info(f'{link}', download=False)
-        video_url = info_dict.get("url", None)
-        video_id = info_dict.get("id", None)
-        video_title = info_dict.get('title', None) 
        try :
-        cmd(f'''yt-dlp -f 22 -ciw  -o "{video_title}.mp4" "{link}"''')
-        with open(f"{video_title}.mp4", 'rb') as f:
-         bot.send_video(user_id, f,caption=video_title)
-        cmd('''rm res.txt "{video_title}.mp4"''')
+        cmd(f'''yt-dlp -f 22 -ciw  -o downloads/"%(title)s.%(ext)s" "{link}"''')
+        cmd(f'''uploadgram -1001821573758 downloads''')
+        shutil.rmtree('./downloads/')
+        cmd('''rm res.txt''')
        except FileNotFoundError: 
          pass   
        zaza += 1  
-      CallbackQuery.edit_message_text("تم التنزيل ✅")   
+      CallbackQuery.edit_message_text("تم التنزيل ✅ \n  تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0  ")   
       cmd(f'unlink file.txt')
 
   elif CallbackQuery.data == "audcont":
+      CallbackQuery.edit_message_text("تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0 ")   
       zaza = int(hazard) +1
       while (zaza <= numbofvid): 
        cmd(f'sed -n {zaza}p file.txt > res.txt')
@@ -193,7 +178,8 @@ def callback_query(CLIENT,CallbackQuery):
        try :
         cmd(f'''yt-dlp -ciw  --extract-audio --audio-format mp3  -o downloads/"%(title)s.%(ext)s"  "{link}"''')
         cmd(f'''uploadgram -1001821573758 downloads''')
-        cmd(f'''rm -r ./downloads/''' )
+        shutil.rmtree('./downloads/')
+        cmd('''rm res.txt''')
        except FileNotFoundError: 
          pass  
        zaza += 1           
