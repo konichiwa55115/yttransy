@@ -38,6 +38,7 @@ def command1(bot,message):
 @bot.on_message(filters.command('clear') & filters.private)
 def command2(bot,message):
     cmd('rm file.txt')
+    shutil.rmtree('./downloads/')
 
 @bot.on_message(filters.private & filters.reply )
 async def refunc(client,message):
