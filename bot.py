@@ -123,11 +123,12 @@ def callback_query(CLIENT,CallbackQuery):
         link = file.read().rstrip('\n')   
        try :
         cmd(f'''yt-dlp -ciw  --extract-audio --audio-format mp3  -o downloads/"%(title)s.%(ext)s"  "{link}"''')
+        cmd(f'''uploadgram -1001821573758 downloads''')
+        shutil.rmtree('./downloads/')
        except FileNotFoundError: 
          pass  
        zaza += 1    
-      cmd(f'''uploadgram -1001821573758 downloads''')
-      shutil.rmtree('./downloads/')
+      
       CallbackQuery.edit_message_text("تم التنزيل ✅ تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0 ")   
       cmd(f'unlink file.txt')
   elif CallbackQuery.data == "vidcont360p":
