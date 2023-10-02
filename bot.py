@@ -70,8 +70,7 @@ def callback_query(CLIENT,CallbackQuery):
   numbofvid = int(temp)
   cmd('unlink res.txt')
   
-  if CallbackQuery.data == "frmstrt":
-      CallbackQuery.edit_message_text("تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0 ")   
+  if CallbackQuery.data == "frmstrt":  
       zaza = 1
       while (zaza <= numbofvid): 
        cmd(f'sed -n {zaza}p file.txt > res.txt')
@@ -94,7 +93,6 @@ def callback_query(CLIENT,CallbackQuery):
        cmd(f'unlink file.txt')
   
   elif CallbackQuery.data == "cont":
-      CallbackQuery.edit_message_text("تجد ملفاتك هنا \n https://t.me/+asgctos1WR81OGI0 ")   
       zaza = int(hazard) +1
       while (zaza <= numbofvid): 
        cmd(f'sed -n {zaza}p file.txt > res.txt')
