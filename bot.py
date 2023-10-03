@@ -29,15 +29,32 @@ def command1(bot,message):
 def command2(bot,message):
     cmd('rm file.txt')
     shutil.rmtree('./downloads/')
-
 @bot.on_message(filters.private & filters.reply )
 async def refunc(client,message):
    if (message.reply_to_message.reply_markup) and isinstance(message.reply_to_message.reply_markup, ForceReply)  :
-          global hazard
-          hazard = message.text ;await message.delete()
-          await message.reply(
-             text = CHOOSE_UR_LANG2,
-             reply_markup = InlineKeyboardMarkup(CHOOSE_UR_LANG2_BUTTONS))
+      hazard = message.text ;await message.delete()
+      zaza = int(hazard) +1
+      while (zaza <= numbofvid): 
+       cmd(f'sed -n {zaza}p file.txt > res.txt')
+       with open('res.txt', 'r') as file:
+        link = file.read().rstrip('\n')   
+       with YoutubeDL() as ydl: 
+        info_dict = ydl.extract_info(f'{link}', download=False)
+        video_url = info_dict.get("url", None)
+        video_id = info_dict.get("id", None)
+        video_title = info_dict.get('title', None)    
+       try :
+        cmd(f'''yt-dlp -ciw  --extract-audio --audio-format mp3  -o "{video_title}"  "{link}"''')
+        cmd(f'''python3 speech.py RK3ETXWBJQSMO262RXPAIXFSG6NH3QRH "{video_title}.mp3" "{video_title}.txt"''')
+        with open(f'''{video_title}.txt''', 'rb') as f:
+         bot.send_document(user_id, f,caption=video_title)
+        cmd(f'''rm res.txt "{video_title}.mp3" "{video_title}.txt"''' )   
+       except FileNotFoundError: 
+         pass  
+       zaza += 1    
+       cmd(f'unlink file.txt')
+
+
 
 
 
@@ -93,25 +110,10 @@ def callback_query(CLIENT,CallbackQuery):
        cmd(f'unlink file.txt')
   
   elif CallbackQuery.data == "cont":
-      zaza = int(hazard) +1
-      while (zaza <= numbofvid): 
-       cmd(f'sed -n {zaza}p file.txt > res.txt')
-       with open('res.txt', 'r') as file:
-        link = file.read().rstrip('\n')   
-       with YoutubeDL() as ydl: 
-        info_dict = ydl.extract_info(f'{link}', download=False)
-        video_url = info_dict.get("url", None)
-        video_id = info_dict.get("id", None)
-        video_title = info_dict.get('title', None)    
-       try :
-        cmd(f'''yt-dlp -ciw  --extract-audio --audio-format mp3  -o "{video_title}"  "{link}"''')
-        cmd(f'''python3 speech.py RK3ETXWBJQSMO262RXPAIXFSG6NH3QRH "{video_title}.mp3" "{video_title}.txt"''')
-        with open(f'''{video_title}.txt''', 'rb') as f:
-         bot.send_document(user_id, f,caption=video_title)
-        cmd(f'''rm res.txt "{video_title}.mp3" "{video_title}.txt"''' )   
-       except FileNotFoundError: 
-         pass  
-       zaza += 1    
-       cmd(f'unlink file.txt')
+      felo.reply_text("الآن أدخل عدد الفيديوهات التي تم تحميلها ",reply_markup=ForceReply(True))
+      CallbackQuery.edit_message_text(
+      
+      "👇"
+   ) 
   
 bot.run()
