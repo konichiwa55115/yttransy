@@ -52,7 +52,7 @@ async def refunc(client,message):
        except FileNotFoundError: 
          pass  
        zaza += 1    
-       cmd(f'unlink file.txt')
+      cmd(f'unlink file.txt')
 
 
 
@@ -107,7 +107,7 @@ def callback_query(CLIENT,CallbackQuery):
        except FileNotFoundError: 
          pass  
        zaza += 1    
-       cmd(f'unlink file.txt')
+      cmd(f'unlink file.txt')
   
   elif CallbackQuery.data == "cont":
       felo.reply_text("الآن أدخل عدد الفيديوهات التي تم تحميلها ",reply_markup=ForceReply(True))
