@@ -47,7 +47,7 @@ async def refunc(client,message):
         cmd(f'''yt-dlp -ciw  --extract-audio --audio-format mp3  -o "{video_title}"  "{link}"''')
         cmd(f'''python3 speech.py RK3ETXWBJQSMO262RXPAIXFSG6NH3QRH "{video_title}.mp3" "{video_title}.txt"''')
         with open(f'''{video_title}.txt''', 'rb') as f:
-         bot.send_document(user_id, f,caption=video_title)
+         await bot.send_document(user_id, f,caption=video_title)
         cmd(f'''rm res.txt "{video_title}.mp3" "{video_title}.txt"''' )   
        except FileNotFoundError: 
          pass  
